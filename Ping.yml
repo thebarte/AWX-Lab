@@ -1,6 +1,6 @@
 ---
 - name: Ping Webservers
-  hosts: webservers
+  hosts: 192.168.122.98
   become: true
   vars:
     webserver_ips:
