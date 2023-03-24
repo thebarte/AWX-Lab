@@ -13,6 +13,7 @@
       copy:
         src: /home/bart/index.html
         dest: /var/www/html/index.html
+        remote_src: yes
       register: website_file
 
     - name: Ensure website file is present
