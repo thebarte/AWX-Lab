@@ -1,0 +1,37 @@
+---
+- name: Deploy simple website with picture
+  hosts: 192.168.122.98
+  become: yes
+
+  tasks:
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Copy website files
+      copy:
+        src: /home/bart/Potatoes.jpg
+        dest: /var/www/html/
+      register: website_files
+
+    - name: Ensure website files are present
+      assert:
+        that:
+          - website_files.changed
+
+    - name: Copy website picture
+      copy:
+        src: /home/bart/Potatoes.jpg
+        dest: /var/www/html/
+      register: website_picture
+
+    - name: Ensure website picture is present
+      assert:
+        that:
+          - website_picture.changed
+
+    - name: Restart Apache web server
+      service:
+        name: apache2
+        state: restarted
