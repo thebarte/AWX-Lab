@@ -1,6 +1,6 @@
 ---
 - name: Deploy simple website with HTML code
-  hosts: webserver
+  hosts: 192.168.122.98
   become: yes
 
   tasks:
