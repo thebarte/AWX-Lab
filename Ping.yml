@@ -1,0 +1,14 @@
+---
+- name: Ping Webservers
+  hosts: webservers
+  become: true
+  vars:
+    webserver_ips:
+      - 192.168.122.34
+      - 192.168.122.61
+      - 192.168.122.98
+
+  tasks:
+    - name: Ping Webservers
+      ping:
+      with_items: "{{ webserver_ips }}"
