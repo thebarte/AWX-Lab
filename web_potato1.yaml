@@ -1,6 +1,6 @@
 ---
-- name: Deploy simple website with picture
-  hosts: 192.168.122.98
+- name: Deploy simple website with HTML code
+  hosts: webserver
   become: yes
 
   tasks:
@@ -9,27 +9,16 @@
         name: apache2
         state: present
 
-    - name: Copy website files
+    - name: Copy website HTML file
       copy:
-        src: /home/bart/Potatoes.jpg
-        dest: /var/www/html/
-      register: website_files
+        src: /home/bart/index.html
+        dest: /var/www/html/index.html
+      register: website_file
 
-    - name: Ensure website files are present
+    - name: Ensure website file is present
       assert:
         that:
-          - website_files.changed
-
-    - name: Copy website picture
-      copy:
-        src: /home/bart/Potatoes.jpg
-        dest: /var/www/html/
-      register: website_picture
-
-    - name: Ensure website picture is present
-      assert:
-        that:
-          - website_picture.changed
+          - website_file.changed
 
     - name: Restart Apache web server
       service:
