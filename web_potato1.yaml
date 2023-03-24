@@ -1,6 +1,6 @@
 ---
 - name: Deploy simple website with picture
-  hosts: 192.168.122.34
+  hosts: 192.168.122.98
   become: yes
 
   tasks:
