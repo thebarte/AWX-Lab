@@ -1,19 +1,9 @@
 ---
 
 - hosts: webservers
-  become: true
+  become: 192.168.122.34
   tasks: 
-
-  - name: update repository index
-    apt:
-      update_cache: yes
-
   - name: Remove apache2 package
     apt:
       name: apache2
-      state: absent
-
-  - name: add php support for apache
-    apt:
-      name: libapache2-mod-php
       state: absent
