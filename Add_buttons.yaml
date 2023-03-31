@@ -4,7 +4,7 @@
   become: yes
 
   tasks:
-    - name: Update index.html to display "Hello from web server"
+    - name: Add buttons to the website
       ansible.builtin.copy:
         dest: /var/www/html/index.html
         content: |
