@@ -1,0 +1,18 @@
+---
+- name: Deploy simple website with HTML code
+  hosts: 192.168.122.61
+  become: yes
+
+  tasks:
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Copy website HTML file
+      copy:
+        src: /home/bart/index.html
+        dest: /var/www/html/index.html
+        remote_src: yes
+      register: website_file
+
