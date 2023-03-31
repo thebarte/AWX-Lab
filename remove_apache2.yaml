@@ -1,9 +1,0 @@
----
-
-- hosts: 192.168.122.34
-  become: yes
-  tasks: 
-  - name: Remove apache2 package
-    apt:
-      name: apache2
-      state: absent
