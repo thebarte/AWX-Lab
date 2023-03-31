@@ -1,0 +1,21 @@
+---
+- name: Update index.html content on web server
+  hosts: 192.168.122.34
+  become: yes
+
+  tasks:
+    - name: Update index.html to display "Hello from web server"
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Hello from web server</title>
+          </head>
+          <body>
+            <h1>Hello from web server</h1>
+          </body>
+          </html>
